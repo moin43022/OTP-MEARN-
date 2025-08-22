@@ -1,0 +1,298 @@
+body {
+  margin: 0;
+  background-color: #f4f4f4;
+}
+
+.containerr {
+  display: flex;
+  flex-direction: column;  
+  width: 100%;
+  background-color: #f5f5f5;
+}
+
+.otp2heading {
+  font-weight: bold;
+  font-size: 32px;
+  color: #45287c;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.date-steps {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid black;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.step {
+  color: #888;
+}
+
+.step.active {
+  font-weight: bold;
+  color: black;
+}
+
+.divider {
+  margin: 0 10px;
+}
+
+.box {
+  background-color: white;
+  padding: 0px 0px 30px 0px;
+  border: 1px solid #eee;
+  border-radius: 4px;
+  width: 42%;
+  align-self: center;
+}
+.select{
+    margin: 10px;
+}
+.btn-selected{
+   background-color: #45287c;
+  color: white;
+  padding: 12px 10px;
+  border: none;
+  border-radius: 4px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 120px;
+}
+.section {
+  margin: 30px 0px 20px 50px;
+}
+
+.btn-time {
+  
+  color: #45287c;
+  padding: 12px 20px;
+  border: 2px #45287c solid;
+  border-radius: 4px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 120px;
+}
+ 
+.btn-time-change{
+  background-color: #45287c;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 16px;
+   width: 120px;
+}
+
+.btn-time-change-lower{
+  background-color:  #45287c;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 16px;
+   width: 120px;
+}
+
+
+.proceed-footer {
+  margin-top: 150px;
+  background-color: white;
+  align-self: center;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  
+}
+
+.proceed-btn {
+  background-color: #45287c;
+  color: white;
+  padding: 12px 60px;
+  border: none;
+  border-radius: 20px;
+  font-size: 20px;
+  cursor: pointer;
+  margin-left: 5px;
+  width: 42%;
+}
+
+@media (max-width: 1920px) {
+.Otp-head-div{
+  margin-left: 30%;
+}
+
+}
+
+@media (max-width: 1600px) {
+.Otp-head-div{
+  margin-left: 25%;
+}
+
+}
+
+@media (max-width: 1024px) {
+    .Otp-head-div {
+        margin-left: 16%;
+    }
+    .btn-selected{
+      width: 30%;
+    }
+}
+
+@media (max-width: 768px) {
+    .Otp-head-div {
+        margin-left: 0%;
+        width: 100%;
+        padding-top: 10px;
+    }
+    .box{
+      width: 75%;
+    }
+    .proceed-btn{
+      width: 75%;
+    }
+    .btn-selected{
+      width: 25%;
+    }
+    .otp2heading{
+      font-size: 1.7rem;
+    }
+    .date-steps span {
+      font-size: 0.8rem;
+    }
+}
+@media (max-width: 615px) {
+  .btn-selected{
+      width: 30%;
+    }
+}
+
+@media (max-width: 480px) {
+  .otp2heading {
+        font-size: 1.5rem;
+    }
+  .btn-selected{
+      width: 80px;
+      font-size: 0.8rem;
+      padding: 7px;
+    }
+    .section {
+    margin: 20px;
+}
+.btn-time{
+  width: 80px;
+  font-size: 0.8rem;
+  padding: 7px;
+}
+.btn-time-change{
+  width: 80px;
+  font-size: 0.8rem;
+  padding: 7px;
+}
+.btn-time-change-lower{
+  width: 80px;
+  font-size: 0.8rem;
+  padding: 7px;
+}
+.box {
+  padding: 0px;
+}
+.select{
+  font-size: 1rem;
+}
+}
+
+@media (max-width: 425px) {
+   
+    .date-steps span {
+      font-size: 0.7rem;
+    }
+}
+@media (max-width: 391px) {
+   
+     .Otp-head-div{
+      gap: 70px;
+     }
+       .btn-selected{
+      width: 35%;
+      font-size: 0.8rem;
+      padding: 7px;
+    }
+}
+@media (max-width: 376px) {
+   
+
+    .date-steps{
+      padding: 5px;
+    }
+}
+
+@media (max-width: 361px) {
+   
+    .date-steps span {
+      font-size: 0.6rem;
+    }
+      .date-steps{
+      padding: 5px;
+    }
+       .btn-selected{
+      width: 35%;
+      font-size: 0.7rem;
+      padding: 7px;
+    }
+    .btn-time{
+  width: 75px;
+  font-size: 0.7rem;
+  padding: 7px;
+}
+.btn-time-change{
+  width: 75px;
+  font-size: 0.7rem;
+  padding: 7px;
+}
+.btn-time-change-lower{
+  width: 75px;
+  font-size: 0.7rem;
+  padding: 7px;
+}
+}
+
+@media (max-width: 321px) {
+    .Otp-head-div{
+      gap: 50px;
+     }
+    .date-steps span {
+      font-size: 0.55rem;
+    }
+       .btn-selected{
+      width: 35%;
+      font-size: 0.6rem;
+      padding: 7px;
+    }
+    .btn-time{
+  width: 70px;
+  font-size: 0.6rem;
+  padding: 7px;
+}
+.btn-time-change{
+  width: 70px;
+  font-size: 0.6rem;
+  padding: 7px;
+}
+.btn-time-change-lower{
+  width: 70px;
+  font-size: 0.6rem;
+  padding: 7px;
+}
+}
+   
