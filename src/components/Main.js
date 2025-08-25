@@ -12,7 +12,7 @@ const navigate = useNavigate();
 const [cap , setCap] = useState(true);
 const [capacity, setcapacity] = useState(100);
 const [bookVisited, setBookVisited] = useState(false);
-const [date, setDate] = useState("2025-08-22");
+const [date, setDate] = useState("2025-08-30");
 
   useEffect(() => {
   const visited = sessionStorage.getItem("bookVisited");

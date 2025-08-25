@@ -9,7 +9,7 @@ export default function Admin() {
   const [tickets, setTickets] = useState([]);
   const [Atickets, setAtickets] = useState(100);
   const [loading, setLoading] = useState(true);
-  const [day, setDay] = useState(25);
+  const [day, setDay] = useState(30);
   const userInfoRef = useRef(); // ✅ Declare the ref
 
  useEffect(() => {

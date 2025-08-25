@@ -165,7 +165,7 @@ Goddess Durga through the vibrant art of Garba and Dandiya Raas.</p></div>
              <div className='time-event'>
           <div className='time-icon'>
             <div className='icon-1'>
-            <p className='event-date'> <i class="fa-regular fa-calendar"></i> 2025-08-25</p>
+            <p className='event-date'> <i class="fa-regular fa-calendar"></i> 2025-08-30</p>
             </div>
             <div className='icon-2'>
             <p className='event-time'><i class="fa-regular fa-clock"></i> 8:00 PM </p>

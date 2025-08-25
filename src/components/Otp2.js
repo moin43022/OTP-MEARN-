@@ -6,7 +6,7 @@ import { useNavigate,Link } from "react-router-dom";
 function GarbaEvent() {
 const [isClicked, setIsClicked] = useState(true);
 const [isClicke, setIsClicke] = useState(true);
-const [date, setdate] = useState('2025-08-25');
+const [date, setdate] = useState('2025-08-30');
 const navigate = useNavigate();
 const left = document.querySelector("#left-b")
          const rigth = document.querySelector("#rigth-b")

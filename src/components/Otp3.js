@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useState , useEffect} from 'react';
 
 function PaymentSummary() {
-  const [date, setdate] = useState('2025-08-25');
+  const [date, setdate] = useState('2025-08-30');
 const [pri, setpri] = useState(499);
 const [price, setprice] = useState(499);
 const [ticket, setticket] = useState(1);
