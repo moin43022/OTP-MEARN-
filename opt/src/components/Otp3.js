@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useState , useEffect} from 'react';
 
 function PaymentSummary() {
-  const [date, setdate] = useState('2025-08-25');
+  const [date, setdate] = useState('2025-08-30');
 const [pri, setpri] = useState(499);
 const [price, setprice] = useState(499);
 const [ticket, setticket] = useState(1);
@@ -46,7 +46,7 @@ function Removeticket(){
    if(Availabel === "true"){
   const fetchEvent = async () => {
     try {
-      const response = await axios.get("http://10.157.87.139:5000/api/events/latest");
+      const response = await axios.get("http://localhost:5000/api/events/latest");
       const Newevent = response.data;
       console.log(Newevent);
 
@@ -83,7 +83,7 @@ const handleSubmit = async () => {
   }
 
   try {
-  const res = await axios.post('http://192.168.29.155:5000/api/tickets/book', {
+  const res = await axios.post('http://localhost:5000/api/tickets/book', {
   phone,
   names: inputs,
   time,

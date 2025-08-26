@@ -96,8 +96,14 @@ body{
   border-radius: 5px;
   font-size: 20px;
 }
-
-
+.a-tag h3:hover{
+  color: #4919b1 ;
+}
+.Phone-btn:hover{
+  background-color: transparent;
+  color: #472B84;
+  border: solid 1px #472B84;
+}
 .phone-icon{
   
    width: 50px;

@@ -5,7 +5,7 @@ import { useNavigate ,Link } from 'react-router-dom';
 import image from './Event.jpg'
 import singer from './Singer.jpeg'
 import axios from 'axios';
-
+import { motion } from "framer-motion";
 
 
 
@@ -105,12 +105,12 @@ useEffect(() => {
               <p className="navbar-logo">Logo</p>
               <ul>
                 <Link to="/" className="a-tag">
-                  <li className="navbar-home">Home</li>
+                  <li className="navbar-home navbar-manu">Home</li>
                 </Link>
-                <Link to="/Edwtails" className="a-tag">
-                  <li>View Event</li>
+                <Link to="/Edetails" className="a-tag">
+                  <li className='navbar-manu'>View Event</li>
                 </Link>
-                <li onClick={handletrecker}>Status Tracker</li>
+                <li onClick={handletrecker} className='navbar-manu'>Status Tracker</li>
                 <Link to="/Login" className="a-tag">
                   <button className="Admin-btn">Admin Login</button>
                 </Link>
@@ -132,15 +132,33 @@ useEffect(() => {
           
           </>
         <div className='event-container'>
-        <div className='event-details-div'>
-          <h1 className='event-heading'>
+        <div className='event-details-div'
+        >
+          
+          <motion.h1 className='event-heading'
+           initial={{ opacity: 0, y: -100 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+          >
             Garba Mega Event
-          </h1>
-          <div className='event-image'>
+          </motion.h1>
+          <motion.div className='event-image'
+           initial={{ opacity: 0, x: -100 }} 
+      whileInView={{ opacity: 1, x: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+          >
               <img src={image} className="E-img" alt='error'   />
-          </div>
-          <div className='details'>
-            <div className='about-box'>
+          </motion.div>
+          <div className='details'
+          >
+            <motion.div className='about-box'
+             initial={{ opacity: 0, x: -100 }} 
+      whileInView={{ opacity: 1, x: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+            >
                <p className='event-about' style={{fontSize:'1.1rem'}}>
                About the Event : Garba Night 2025 
             </p>
@@ -148,13 +166,38 @@ useEffect(() => {
             Get ready for a magical night filled with rhythm, tradition, and joy! Garba Night 2025 is not 
 just an event—it's a celebration of culture, community, and devotion Join us as we dance to 
 the beats of traditional folk music and modern remixes, celebrating the divine energy of
-Goddess Durga through the vibrant art of Garba and Dandiya Raas.</p></div>
-<div className='artist'>
-    <p>Artist</p>
+Goddess Durga through the vibrant art of Garba and Dandiya Raas.</p></motion.div>
+<div className='artist'
+>
+    <motion.p
+      initial={{ opacity: 0, y: -100 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+    >Artist</motion.p>
+    <motion.div 
+      initial={{ opacity: 0, x: -100 }} 
+      whileInView={{ opacity: 1, x: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+    >
+
      <img src={singer}  className="A-img" alt='error' style={{height: '133px', width:'222px'}} />
-     <pre >Singer</pre>
+
+    </motion.div>
+     <motion.pre 
+       initial={{ opacity: 0, y: 100 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+     >Singer</motion.pre>
     
-     <label className='event-artist'>Falguni Pathak</label>
+     <motion.label className='event-artist'
+     initial={{ opacity: 0, y: 100 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+     >Falguni Pathak</motion.label>
    
 </div>
           </div>
@@ -163,9 +206,14 @@ Goddess Durga through the vibrant art of Garba and Dandiya Raas.</p></div>
 
          <div className='p-time'>
              <div className='time-event'>
-          <div className='time-icon'>
+          <motion.div className='time-icon' 
+          initial={{ opacity: 0, x: 100 }} 
+      whileInView={{ opacity: 1, x: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+          >
             <div className='icon-1'>
-            <p className='event-date'> <i class="fa-regular fa-calendar"></i> 2025-08-25</p>
+            <p className='event-date'> <i class="fa-regular fa-calendar"></i> 2025-08-30</p>
             </div>
             <div className='icon-2'>
             <p className='event-time'><i class="fa-regular fa-clock"></i> 8:00 PM </p>
@@ -180,11 +228,21 @@ Goddess Durga through the vibrant art of Garba and Dandiya Raas.</p></div>
              <div className='icon-5'>
             <p  ><i class="fa-solid fa-location-dot"></i> { location ?? "Jyoti nagar, khargone "} <i class="fa-solid fa-plane-departure"   onClick={getDirections} style={{cursor: 'pointer', color: ' #472B84', marginLeft :'20px', fontSize:'25px'}} ></i></p>
             </div>
-          </div>
+          </motion.div>
           <div className='payment'>
-            <p className='ticket-price'><i class="fa-solid fa-indian-rupee-sign "></i> 499 Onwards</p>
+            <motion.p className='ticket-price'
+            initial={{ opacity: 0, x: 100 }} 
+      whileInView={{ opacity: 1, x: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+            ><i class="fa-solid fa-indian-rupee-sign "></i> 499 Onwards</motion.p>
 
-            <button onClick={BokkNow}>Book Now</button>
+            <motion.button onClick={BokkNow}
+            initial={{ opacity: 0, y: -100 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+            >Book Now</motion.button>
            
           </div>
 
@@ -197,16 +255,26 @@ Goddess Durga through the vibrant art of Garba and Dandiya Raas.</p></div>
 
                    <div className='footer'>
               <div className='footer-data'>
-                <div className='footer-heading'>
+                <motion.div className='footer-heading'
+                initial={{ opacity: 0, x: -100 }} 
+      whileInView={{ opacity: 1, x: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+                >
                   <h3 style={{marginLeft:'5px'}} className='footer-logo-heading'>Logo</h3>
                   <h3 className='footer-about-heading'>About</h3>
                   <h3 style={{marginLeft:'190px',marginBottom:'10px'}} className='footer-contact-heading'>Contact</h3>
                   <h3 style={{marginLeft:'110px'}} className='footer-terms-heading'>Terms</h3>
-                </div>
+                </motion.div>
 
 
                 <div className='footer-about'>
-                  <div className='whole-about'>
+                  <motion.div className='whole-about'
+                   initial={{ opacity: 0, y: 100 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+                  >
                     <div className='about-data'>
                       <span>•</span>
                       <p className='about-first-detail'>Name Is Smart Queue Management System.</p>
@@ -226,12 +294,19 @@ Goddess Durga through the vibrant art of Garba and Dandiya Raas.</p></div>
                       <span>•</span>
                       <p>Aims to improve user  experience and service speed.</p>
                     </div>
-                 </div>
+                 </motion.div>
 
 
 
-                  <div className='footer-contact'>
-                    <div className='contact-data'>
+                  <motion.div className='footer-contact'
+                  
+                                       initial={{ opacity: 0, y: 100 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}>
+                    <div className='contact-data'
+
+                    >
                       <i className="fa-solid fa-location-dot"></i>
                       <p>Address: 1st floor, baheti tower, Khargone MP.</p>
                     </div>
@@ -245,12 +320,19 @@ Goddess Durga through the vibrant art of Garba and Dandiya Raas.</p></div>
                       <i className="fa-solid fa-envelope"></i>
                       <p>Email: support@ourname@gmail.com</p>
                     </div>
-                  </div>
+                  </motion.div>
 
 
 
-                  <div className='footer-terms'>
-                    <div className='terms-data'>
+                  <motion.div className='footer-terms'
+                   initial={{ opacity: 0, y: 100 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+                  >
+                    <div className='terms-data'
+                    
+                    >
                       <span>•</span>
                       <p>User must book a slot in advance.</p>
                     </div>
@@ -269,23 +351,33 @@ Goddess Durga through the vibrant art of Garba and Dandiya Raas.</p></div>
                       <span>•</span>
                       <p>Users data securely stored and not shared</p>
                     </div>
-                  </div>
+                  </motion.div>
 
                 </div>
                 
               </div>
 
               <div className='footer-bottom'>
-                <div>
+                <motion.div
+                initial={{ opacity: 0, x: -100 }} 
+      whileInView={{ opacity: 1, x: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+                >
                  <p>@ 2025 Site name. All Rights Reserved</p>
-                </div>
-                <div className='social-media'>
+                </motion.div>
+                <motion.div className='social-media'
+                initial={{ opacity: 0, x: 100 }} 
+      whileInView={{ opacity: 1, x: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+                >
                   <h3>Follow Us</h3>
                   <i  className="fa-brands fa-instagram"></i>
                   <i className="fa-brands fa-facebook"></i>
                   <i className="fa-brands fa-x-twitter"></i>
                   <i className="fa-brands fa-linkedin-in"></i>
-                </div>
+                </motion.div>
               </div>
 
             </div>

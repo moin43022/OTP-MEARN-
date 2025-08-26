@@ -4,12 +4,13 @@ import { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
+import { motion } from "framer-motion";
 
 export default function Admin() {
   const [tickets, setTickets] = useState([]);
   const [Atickets, setAtickets] = useState(100);
   const [loading, setLoading] = useState(true);
-  const [day, setDay] = useState(25);
+  const [day, setDay] = useState(30);
   const userInfoRef = useRef(); // ✅ Declare the ref
 
  useEffect(() => {
@@ -20,7 +21,7 @@ export default function Admin() {
       console.log(Availabel);
    if(Availabel === "true"){
     
-      const eventResponse = await axios.get("http://192.168.29.155:5000/api/events/latest");
+      const eventResponse = await axios.get("http://localhost:5000/api/events/latest");
       const Newevent = eventResponse.data;
       console.log("✔ Latest Event:", Newevent);
       // Set state from event data
@@ -30,7 +31,7 @@ export default function Admin() {
     }
 
       // 2️⃣ Fetch all tickets
-      const ticketsResponse = await axios.get("http://192.168.29.155:5000/api/tickets");
+      const ticketsResponse = await axios.get("http://localhost:5000/api/tickets");
       console.log("✔ Tickets Fetched:", ticketsResponse.data);
       setTickets(ticketsResponse.data);
 
@@ -109,7 +110,9 @@ export default function Admin() {
     <div className='content'>
       
   <div className={`admin ${click ? "show" : ""}`}>
-        <div className='admin-div'>
+        <div className='admin-div'
+
+        >
         <p className='home-2'>
             <i class="fa-solid fa-house"></i>
             <Link  to="/" className='a-tag'> <button className='admin-btn'>Home</button></Link>
@@ -148,16 +151,23 @@ export default function Admin() {
           <nav className='main-nav navbar'>
                            <p className='navbar-logo'>Logo</p>
                        <ul>
-                           <Link  to="/" className='a-tag'> <li className='navbar-home'>Home</li></Link>
-                          <Link  to='/Edetails'  className='a-tag' >  <li>View Event</li></Link>
+                           <Link  to="/" className='a-tag'> <li className='navbar-home navbar-manu'>Home</li></Link>
+                          <Link  to='/Edetails'  className='a-tag' >  <li className='navbar-manu'> View Event</li></Link>
          
                              <Link to="/Login" className='a-tag'><button className='Admin-btn'>Admin Login</button></Link>
                            
                        </ul>
                    </nav>
 
-         <div className='dashboard-section'>
-        <h2 className='dashboard-title'>Dashboard</h2>
+         <div className='dashboard-section'
+         
+         >
+        <motion.h2 className='dashboard-title'
+         initial={{ opacity: 0, y: -100 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+        >Dashboard</motion.h2>
         <div>
         <li className="menu-toggle" onClick={() => setClick(!click)}>
               <i className="fa-solid fa-bars"></i>
@@ -166,15 +176,25 @@ export default function Admin() {
 
         </div>
         <div className='dashboard'>
-          <div className='dashboard-div'>
+          <motion.div className='dashboard-div'
+          initial={{ opacity: 0, y: -100 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+          >
             <div className='dashboard-icon'><i className="fa-regular fa-calendar"></i></div>
             <div className='dashboard-info'>
               <h3>{day}</h3>
               <h5>Event Date</h5>
             </div>
-          </div>
+          </motion.div>
 
-          <div className='dashboard-div'>
+          <motion.div className='dashboard-div'
+          initial={{ opacity: 0, y: -100 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+          >
             <div className='dashboard-icon' style={{ background: 'palevioletred' }}>
               <i className="fa-solid fa-ticket"></i>
             </div>
@@ -182,9 +202,14 @@ export default function Admin() {
               <h3>{tickets.length}</h3>
               <h5>Tickets Sold</h5>
             </div>
-          </div>
+          </motion.div>
 
-          <div className='dashboard-div'>
+          <motion.div className='dashboard-div'
+          initial={{ opacity: 0, y: -100 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+          >
             <div className='dashboard-icon' style={{ background: 'rgb(61, 111, 220)' }}>
               <i className="fa-solid fa-ticket"></i>
             </div>
@@ -192,9 +217,14 @@ export default function Admin() {
               <h3>{Atickets - tickets.length}</h3>
               <h5>Ticket Remaining</h5>
             </div>
-          </div>
+          </motion.div>
 
-          <div className='dashboard-div'>
+          <motion.div className='dashboard-div'
+          initial={{ opacity: 0, y: -100 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+          >
             <div className='dashboard-icon' style={{ background: 'rgb(82, 193, 82)' }}>
               <span> ₹</span>
             </div>
@@ -204,7 +234,7 @@ export default function Admin() {
               </h3>
               <h5>Total Revenue</h5>
             </div>
-          </div>
+          </motion.div>
         </div>
 
        {/* ✅ Only wrap this content */}

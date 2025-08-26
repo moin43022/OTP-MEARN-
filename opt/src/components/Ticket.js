@@ -20,7 +20,7 @@ export default function Token() {
 
 try{
 
- axios.get(`http://192.168.29.155:5000/api/tickets/by-phone?phone=${phone}`)
+ axios.get(`http://localhost:5000/api/tickets/by-phone?phone=${phone}`)
     .then((res) => {
       setTickets(res.data);
       setLoading(false);
@@ -99,12 +99,12 @@ const [click, setClick] = useState(false);
                      <p className="navbar-logo">Logo</p>
                      <ul>
                        <Link to="/" className="a-tag">
-                         <li className="navbar-home">Home</li>
+                         <li className="navbar-home navbar-manu">Home</li>
                        </Link>
                        <Link to="/Edwtails" className="a-tag">
-                         <li>View Event</li>
+                         <li className='navbar-manu'>View Event</li>
                        </Link>
-                       <li>Status Tracker</li>
+                       <li className='navbar-manu'>Status Tracker</li>
                        <Link to="/Login" className="a-tag">
                          <button className="Admin-btn">Admin Login</button>
                        </Link>

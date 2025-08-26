@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios';
 import "./Main.css"
+import { motion } from "framer-motion";
 import {useState, useEffect} from 'react';
 import Slider from './Event.jpg'
 import Manage from './Manage.jpg'
@@ -12,7 +13,7 @@ const navigate = useNavigate();
 const [cap , setCap] = useState(true);
 const [capacity, setcapacity] = useState(100);
 const [bookVisited, setBookVisited] = useState(false);
-const [date, setDate] = useState("2025-08-22");
+const [date, setDate] = useState("2025-08-30");
 
   useEffect(() => {
   const visited = sessionStorage.getItem("bookVisited");
@@ -41,7 +42,8 @@ useEffect(() => {
 
 useEffect(() => {
   if (!capacity) return; 
-  axios.get(`http://192.168.29.155:5000/api/Tickets/check-capacity?capacity=${capacity}`)
+  axios.get(`http://localhost:5000/api/Tickets/check-capacity?capacity=${capacity}`)
+
     .then((res) => {
       if (res.data.capacityFull) {
         setCap(false);
@@ -66,32 +68,32 @@ useEffect(() => {
 
 
 
-useEffect(() => {
+// useEffect(() => {
   
-  const fetchLatestEvent = async () => {
-    try {
-      const response = await axios.get("http://192.168.29.155:5000/api/events/latest");
+//   const fetchLatestEvent = async () => {
+//     try {
+//       const response = await axios.get("http://localhost:5000/api/events/latest");
 
-      localStorage.setItem("availabel",true);
-      const Newevent = response.data; 
-      console.log("Latest Event:", Newevent);
+//       localStorage.setItem("availabel",true);
+//       const Newevent = response.data; 
+//       console.log("Latest Event:", Newevent);
 
-      if (Newevent.deadline) setDate(Newevent.deadline);
+//       if (Newevent.deadline) setDate(Newevent.deadline);
 
-      const img = document.querySelectorAll(".d-block");
-      img.forEach((e) => {
-        if (Newevent.image1) e.src = Newevent.image1;
-      });
-    } catch (err) {
-      localStorage.setItem("availabel",false);
-      console.error("Error fetching latest event:", err);
-    
+//       const img = document.querySelectorAll(".d-block");
+//       img.forEach((e) => {
+//         if (Newevent.image1) e.src = Newevent.image1;
+//       });
+//     } catch (err) {
+//       console.error("Error fetching latest event:", err);
+      
+      
+//   };
   
-  };
-
-}
-fetchLatestEvent();
-}, []);
+// }
+// fetchLatestEvent();
+// }, []);
+localStorage.setItem("availabel",false);
 
 
   
@@ -114,12 +116,12 @@ const [click, setClick] = useState(false);
         <p className="navbar-logo">Logo</p>
         <ul>
           <Link to="/" className="a-tag">
-            <li className="navbar-home">Home</li>
+            <li className="navbar-home navbar-manu">Home</li>
           </Link>
-          <li onClick={handleview}>
+          <li onClick={handleview} className='navbar-manu'>
             <p>View Event</p>
           </li>
-          <li onClick={handletrecker}>Status Tracker</li>
+          <li onClick={handletrecker} className='navbar-manu'>Status Tracker</li>
           <Link to="/Login" className="a-tag">
             <button className="Admin-btn">Admin Login</button>
           </Link>
@@ -222,7 +224,11 @@ const [click, setClick] = useState(false);
             </div>
 
 
-            <div className='slider-advantage'>
+            <motion.div className='slider-advantage' 
+             initial={{ opacity: 0, y: 100 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}>
                 <div className='advantage'>
                     <i className="fa-regular fa-clock"></i>
                     <div className='advantage-details'>
@@ -246,7 +252,7 @@ const [click, setClick] = useState(false);
                       <h6>Reduce physical crowding and unnessasary.</h6>
                     </div>
                 </div>
-            </div>
+            </motion.div>
                
 
             <div className='event-banner'>
@@ -265,31 +271,53 @@ const [click, setClick] = useState(false);
 </div>
 
             <div className='time-managment'>
-              <div className='time-img-div'>
-                 <img src={Manage} alt='' className='time-img' />
-              </div>
-              <div className='time-content'>
-                <h1>Manage The Time</h1>
-                <p>Optimize your event with smart queue management that keeps everything moving smoothly.</p>
-                <pre>Reduce waiting time and avoid crowd buildup at entry points. Give your visitors a faster,</pre>
-                <pre>hassle-free experience from the moment they arrive. No more long lines—just happy,</pre>
-                <pre>engaged attendees.</pre>
-              </div>
+                  <motion.div className="time-img-div" 
+      initial={{ opacity: 0, x: -100 }} 
+      whileInView={{ opacity: 1, x: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+      >
+        <img src={Manage} alt="" className="time-img" />
+      </motion.div>
+      <motion.div className="time-content"
+      initial={{ opacity: 0, x: -100 }} 
+      whileInView={{ opacity: 1, x: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+      >
+        <h1>Manage The Time</h1>
+        <p>Optimize your event with smart queue management that keeps everything moving smoothly.</p>
+        <pre>Reduce waiting time and avoid crowd buildup at entry points. Give your visitors a faster,</pre>
+        <pre>hassle-free experience from the moment they arrive. No more long lines—just happy,</pre>
+        <pre>engaged attendees.</pre>
+      </motion.div>
+
             </div>
 
 
             <div className='footer'>
               <div className='footer-data'>
-                <div className='footer-heading'>
+                 <motion.div className='footer-heading' 
+                initial={{ opacity: 0, x: -100 }} 
+      whileInView={{ opacity: 1, x: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+      >
                   <h3 style={{marginLeft:'5px'}} className='footer-logo-heading'>Logo</h3>
                   <h3 className='footer-about-heading'>About</h3>
                   <h3 style={{marginLeft:'190px',marginBottom:'10px'}} className='footer-contact-heading'>Contact</h3>
                   <h3 style={{marginLeft:'110px'}} className='footer-terms-heading'>Terms</h3>
-                </div>
+                </motion.div>
+
 
 
                 <div className='footer-about'>
-                  <div className='whole-about'>
+                            <motion.div className='whole-about'
+                  initial={{ opacity: 0, y: 100 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+      >
                     <div className='about-data'>
                       <span>•</span>
                       <p className='about-first-detail'>Name Is Smart Queue Management System.</p>
@@ -309,11 +337,16 @@ const [click, setClick] = useState(false);
                       <span>•</span>
                       <p>Aims to improve user  experience and service speed.</p>
                     </div>
-                 </div>
+                 </motion.div>
 
 
 
-                  <div className='footer-contact'>
+                  <motion.div className='footer-contact' 
+                  initial={{ opacity: 0, y: 100 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+      >
                     <div className='contact-data'>
                       <i className="fa-solid fa-location-dot"></i>
                       <p>Address: 1st floor, baheti tower, Khargone MP.</p>
@@ -328,11 +361,16 @@ const [click, setClick] = useState(false);
                       <i className="fa-solid fa-envelope"></i>
                       <p>Email: support@ourname@gmail.com</p>
                     </div>
-                  </div>
+                  </motion.div>
 
 
 
-                  <div className='footer-terms'>
+   <motion.div className='footer-terms' 
+                  initial={{ opacity: 0, y: 100 }} 
+      whileInView={{ opacity: 1, y: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+      >
                     <div className='terms-data'>
                       <span>•</span>
                       <p>User must book a slot in advance.</p>
@@ -352,23 +390,33 @@ const [click, setClick] = useState(false);
                       <span>•</span>
                       <p>Users data securely stored and not shared</p>
                     </div>
-                  </div>
+                  </motion.div>
+
+
 
                 </div>
                 
               </div>
 
               <div className='footer-bottom'>
-                <div>
+                <motion.div  initial={{ opacity: 0, x: -100 }} 
+      whileInView={{ opacity: 1, x: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}>
                  <p>@ 2025 Site name. All Rights Reserved</p>
-                </div>
-                <div className='social-media'>
+                </motion.div>
+                <motion.div className='social-media'
+                 initial={{ opacity: 0, x: 100 }} 
+      whileInView={{ opacity: 1, x: 0 }} 
+      transition={{ duration: 1, ease: "easeOut" }} 
+      viewport={{ once: true, amount: 0.2 }}
+                >
                   <h3>Follow Us</h3>
                   <i  className="fa-brands fa-instagram"></i>
                   <i className="fa-brands fa-facebook"></i>
                   <i className="fa-brands fa-x-twitter"></i>
                   <i className="fa-brands fa-linkedin-in"></i>
-                </div>
+                </motion.div>
               </div>
 
             </div>

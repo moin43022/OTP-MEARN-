@@ -7,7 +7,7 @@ function Popup({ show, onClose, children }) {
   return (
     <div className="popup-overlay">
       <div className="popup">
-        <button className="close-btn" onClick={onClose} style={{fontSize:'30px',color:'white'}}>×</button>
+        <button className="closse-btn" onClick={onClose} style={{fontSize:'30px',color:'white'}}>×</button>
         <div className="popup-content">
           {children}
         </div>

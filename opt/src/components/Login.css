@@ -84,6 +84,11 @@ input{
     cursor: pointer;
 }
 
+.sign-btn:hover{
+    background-color: transparent;
+    color: #472B84;
+    border: solid 1px #472B84;
+}
 
 
 @media screen and (min-width: 1601px) and (max-width: 1920px) {

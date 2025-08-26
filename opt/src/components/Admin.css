@@ -86,7 +86,9 @@
     font-size: 1.25rem; /* 14px (assumed default for h5) */
     margin: 15px 0px 0px 0px;
 }
-
+.admin-btn:hover{
+ color:  #4919b1;  
+}
 
 .user-heading,
 .user-info {

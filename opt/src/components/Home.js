@@ -31,7 +31,7 @@ function PhoneAuth() {
       );
     }
     try { 
-    const response = axios.get("http://192.168.29.155:5000/api/events/latest");
+    const response = axios.get("http://localhost:5000/api/events/latest");
       if (response) {
           const Newevent = response.data; 
         console.log(Newevent);

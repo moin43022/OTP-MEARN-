@@ -6,7 +6,7 @@ import { useNavigate,Link } from "react-router-dom";
 function GarbaEvent() {
 const [isClicked, setIsClicked] = useState(true);
 const [isClicke, setIsClicke] = useState(true);
-const [date, setdate] = useState('2025-08-25');
+const [date, setdate] = useState('2025-08-30');
 const navigate = useNavigate();
 const left = document.querySelector("#left-b")
          const rigth = document.querySelector("#rigth-b")
@@ -26,7 +26,7 @@ useEffect(() => {
    if(Availabel === "true"){
   const fetchEvent = async () => {
     try {
-      const response = await axios.get("http://192.168.29.155:5000/api/events/latest");
+      const response = await axios.get("http://localhost:5000/api/events/latest");
       const Newevent = response.data; 
       console.log(Newevent);
 

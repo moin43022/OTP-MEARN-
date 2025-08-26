@@ -42,63 +42,49 @@ const handleSubmit = async (e) => {
   sessionStorage.setItem("bookVisited", "false");
 
   try {
-    // Clear ticket collection first
-    await axios.delete("http://192.168.29.155:5000/api/Tickets/clear");
+    // Clear old tickets
+    await axios.delete("http://localhost:5000/api/Tickets/clear");
     console.log("✅ Ticket collection cleared.");
 
-    const reader1 = new FileReader();
-    const reader2 = new FileReader();
-
-    let img1Base64 = null;
-    let img2Base64 = null;
-
-    const sendToBackend = async (img1Base64, img2Base64) => {
-      const fullData = {
-        ...formData,
-        image1: img1Base64 || null,
-        image2: img2Base64 || null,
-      };
-
-      try {
-        const res = await axios.post("http://192.168.29.155:5000/api/events/add", fullData);
-        console.log("✅ Event saved:", res.data);
-        navigate('/');
-      } catch (err) {
-        console.error("❌ Error saving event to backend:", err);
-        alert("Error saving event to backend");
-      }
+    // Helper: convert file → base64
+    const fileToBase64 = (file) => {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(file);
+      });
     };
 
-    // Handle first image
-    if (image1?.file) {
-      reader1.onloadend = () => {
-        img1Base64 = reader1.result;
-        if (!image2?.file) sendToBackend(img1Base64, null);
-        else if (img2Base64 !== null) sendToBackend(img1Base64, img2Base64);
-      };
-      reader1.readAsDataURL(image1.file);
-    }
+    // Convert images if present
+    const img1Base64 = image1?.file ? await fileToBase64(image1.file) : null;
+    const img2Base64 = image2?.file ? await fileToBase64(image2.file) : null;
 
-    // Handle second image
-    if (image2?.file) {
-      reader2.onloadend = () => {
-        img2Base64 = reader2.result;
-        if (!image1?.file) sendToBackend(null, img2Base64);
-        else if (img1Base64 !== null) sendToBackend(img1Base64, img2Base64);
-      };
-      reader2.readAsDataURL(image2.file);
-    }
+    // Build full data
+    const fullData = {
+      ...formData,
+      image1: img1Base64,
+      image2: img2Base64,
+    };
 
-    // If no images
-    if (!image1?.file && !image2?.file) {
-      sendToBackend(null, null);
-    }
+    // Debug log
+    console.log("📦 Sending to backend:", fullData);
+
+    // Send to backend
+    const res = await axios.post("http://localhost:5000/api/events/add",
+      fullData,
+      { headers: { "Content-Type": "application/json" } }
+    );
+
+    console.log("✅ Event saved:", res.data);
+    navigate('/');
 
   } catch (err) {
     console.error("❌ Error submitting form:", err);
-    alert("Error clearing previous data or saving new event.");
+    alert("Error saving event to backend.");
   }
 };
+
 
 
 

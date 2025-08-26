@@ -136,6 +136,11 @@ body {
   border-radius: 30px;
   cursor: pointer;
 }
+.pay-btn:hover{
+  background-color: transparent;
+  color: #45287c;
+  border: #45287c solid 1px;
+}
  .ticket-l{
   margin-left: 11rem;
  }

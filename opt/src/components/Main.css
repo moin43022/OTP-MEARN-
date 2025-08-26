@@ -17,6 +17,7 @@ body{
     color: inherit;
     
 }
+
  /* Main Page Navbar */
  
 .main-nav{
@@ -295,7 +296,9 @@ body{
     color: black;
   }
 }
-
+.navbar-manu:hover{
+ color:  #4919b1;  
+}
 /* footer bottom */
 
 
